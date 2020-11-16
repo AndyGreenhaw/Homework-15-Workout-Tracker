@@ -22,12 +22,13 @@ async function initExercise() {
 
   if (location.search.split("=")[1] === undefined) {
     workout = await API.createWorkout()
+    console.log("No Workout Read")
     console.log(workout)
   }
   if (workout) {
+    console.log("No Workout Read")
     location.search = "?id=" + workout._id;
   }
-
 }
 
 initExercise();

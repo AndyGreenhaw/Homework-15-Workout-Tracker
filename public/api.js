@@ -1,5 +1,3 @@
-const Workout = require("../models/workoutSchema")
-
 const API = {
   async getLastWorkout() {
     let res;
