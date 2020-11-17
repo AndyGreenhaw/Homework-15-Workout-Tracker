@@ -19,6 +19,5 @@ module.exports = function(app){
     });
 
     // app.get("/id=:id", function (req, res) {
-
     // })
 };

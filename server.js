@@ -19,10 +19,14 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Setting Up Mongo
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 // Setting Up Routes //
 require("./routes/apiRoutes")(app);
