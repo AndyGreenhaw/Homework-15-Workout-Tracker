@@ -36,12 +36,6 @@ const workoutSchema = new Schema({
             type: Number
         }
     }
-    // {
-    //     toJSON: {
-    //       // include any virtual properties when data is requested
-    //       virtuals: true
-    //     }
-    // }
 ]
 });
 
