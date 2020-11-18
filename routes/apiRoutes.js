@@ -6,7 +6,7 @@ module.exports = function (app) {
 // GET ROUTE for Getting Workouts //
 ////////////////////////////////////
 
-    app.get("/api/workouts", function(req,res) {
+    app.get("/api/workouts", async function(req,res) {
     Workout.find()
         .then(data => {
             res.json(data)
@@ -17,16 +17,23 @@ module.exports = function (app) {
         })
     })
 
-//////////////////
-// POST ROUTE for Posting New Workouts???
-//////////////////
-  
-    app.post("/api/workouts", function(req,res){
-    //   var id = req.params.id
-    //     var data = req.data
-    //     console.log(data)
-    //     console.log(id)
+//////////////////////////////
+// GET ROUTE for Stats Page //
+//////////////////////////////
+    app.get("/api/workouts/range", async function(req,res){
+    Workout.find().limit(7)
+        .then(data => {
+            res.json(data)
+        }).catch(err => {
+            res.json(err)
+        })
+    })
 
+////////////////
+// POST ROUTE //
+////////////////
+  
+    app.post("/api/workouts", async function(req,res){
         console.log(req.body)
         console.log(req.params.id)
     
@@ -39,17 +46,13 @@ module.exports = function (app) {
     })
 
 
-//////////////////
-// PUT ROUTE for Saving Workouts???
-//////////////////
+///////////////
+// PUT ROUTE //
+///////////////
 
     app.put("/api/workouts/:id", function(req,res){
-    var id = req.params.id
-    var data = req.body
-    // console.log(id);
-    // console.log(data);
 
-    Workout.findOneAndUpdate(id, data)
+    Workout.findOneAndUpdate(req.params.id, req.body)
         .then(dbWorkout => {
             res.json(dbWorkout);
         }).catch(err => {

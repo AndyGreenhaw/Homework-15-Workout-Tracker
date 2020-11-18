@@ -18,6 +18,4 @@ module.exports = function(app){
         res.sendFile(path.join(__dirname, "../public/stats.html"));
     });
 
-    // app.get("/id=:id", function (req, res) {
-    // })
 };
