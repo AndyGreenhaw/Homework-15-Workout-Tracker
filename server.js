@@ -3,7 +3,7 @@
 //////////////////////////
 // Dependencies
 const express = require("express");
-const morgan = require("morgan");
+const logger = require("morgan");
 const mongoose = require("mongoose");
 
 // Setting Up Express
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4444;
 const app = express();
 
 // Setting Up Morgan Middleware
-app.use(morgan("dev"));
+app.use(logger("dev"));
 
 // Configuring Express App
 app.use(express.urlencoded({ extended: true }));

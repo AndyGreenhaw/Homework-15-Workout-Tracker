@@ -21,7 +21,7 @@ module.exports = function (app) {
 // GET ROUTE for Stats Page //
 //////////////////////////////
     app.get("/api/workouts/range", async function(req,res){
-    Workout.find().limit(7)
+    Workout.find({}).limit(7)
         .then(data => {
             res.json(data)
         }).catch(err => {
@@ -51,8 +51,11 @@ module.exports = function (app) {
 ///////////////
 
     app.put("/api/workouts/:id", function(req,res){
-
-    Workout.findOneAndUpdate(req.params.id, req.body)
+    Workout.findByIdAndUpdate(
+        req.params.id,
+        { $push: { exercises: req.body } },
+        { new: true}
+        )
         .then(dbWorkout => {
             res.json(dbWorkout);
         }).catch(err => {
