@@ -39,7 +39,7 @@ module.exports = function (app) {
     
         Workout.create(req.body)
         .then(dbWorkout => {
-            res.send(dbWorkout)
+            res.json(dbWorkout)
         }).catch(err => {
             res.status(400).json(err)
         })
